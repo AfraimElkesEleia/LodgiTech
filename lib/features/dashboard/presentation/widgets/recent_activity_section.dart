@@ -54,6 +54,7 @@ class RecentActivitySection extends StatelessWidget {
           ),
           const SizedBox(height: 16),
           Column(
+            mainAxisSize: MainAxisSize.min,
             children: List.generate(4, (index) {
               return RecentActivityItem(
                 recentActivity: recentActivities[index],

@@ -6,6 +6,8 @@ import 'package:lodgitech/features/dashboard/data/models/quick_actions_card.dart
 import 'package:lodgitech/features/dashboard/presentation/widgets/basic_information_block.dart';
 import 'package:lodgitech/features/dashboard/presentation/widgets/custom_drawer.dart';
 import 'package:lodgitech/features/dashboard/presentation/widgets/dashboard_charts_desktop_layout.dart';
+import 'package:lodgitech/features/dashboard/presentation/widgets/desktop_layout_dashboard_status_list.dart';
+import 'package:lodgitech/features/dashboard/presentation/widgets/quick_activities_and_recent_activity.dart';
 import 'package:lodgitech/features/dashboard/presentation/widgets/recent_activity_section.dart';
 
 class DashboardDesktopLayout extends StatelessWidget {
@@ -94,146 +96,14 @@ class DashboardDesktopLayout extends StatelessWidget {
                 ),
                 const SliverToBoxAdapter(child: SizedBox(height: 16)),
                 const SliverToBoxAdapter(child: DashboardChartsDesktopLayout()),
-                const SliverToBoxAdapter(child: SizedBox(height: 16)),
-                SliverToBoxAdapter(
-                  child: IntrinsicHeight(
-                    child: Row(
-                      children: [
-                        Expanded(child: RecentActivitySection()),
-                        Expanded(
-                          child: CustomContainer(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  "Occupancy & Revenue Trends",
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.w600,
-                                    fontSize: 18,
-                                  ),
-                                ),
-                                SizedBox(height: 6),
-                                Text(
-                                  "Monthly occupancy rate and revenue over time",
-                                  style: TextStyle(color: Colors.grey),
-                                ),
-                                SizedBox(height: 20),
-                                Column(
-                                  children: [
-                                    Row(
-                                      children: [
-                                        DashboardQuickActionsCard(
-                                          quickActionsCard: QuickActionsCard(
-                                            name: "New Reservation",
-                                            icon: FontAwesomeIcons.calendar,
-                                          ),
-                                          isReservationCard: true,
-                                        ),
-                                        DashboardQuickActionsCard(
-                                          quickActionsCard: QuickActionsCard(
-                                            name: "Quick check in",
-                                            icon: FontAwesomeIcons.user,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                    Row(
-                                      children: [
-                                        DashboardQuickActionsCard(
-                                          quickActionsCard: QuickActionsCard(
-                                            name: "Room Status",
-                                            icon: FontAwesomeIcons.building,
-                                          ),
-                                        ),
-                                        DashboardQuickActionsCard(
-                                          quickActionsCard: QuickActionsCard(
-                                            name: "Generate Bill",
-                                            icon: FontAwesomeIcons.moneyBill,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
+                const SliverToBoxAdapter(child: SizedBox(height: 8)),
+                SliverToBoxAdapter(child: QuickActivitiesAndRecentActivity()),
                 const SliverToBoxAdapter(child: SizedBox(height: 16)),
               ],
             ),
           ),
         ],
       ),
-    );
-  }
-}
-
-class DashboardQuickActionsCard extends StatelessWidget {
-  final QuickActionsCard quickActionsCard;
-  final bool? isReservationCard;
-  const DashboardQuickActionsCard({
-    super.key,
-    required this.quickActionsCard,
-    this.isReservationCard,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Expanded(
-      child: Container(
-        margin: EdgeInsets.symmetric(horizontal: 8, vertical: 8),
-        padding: EdgeInsets.all(16),
-        decoration: ShapeDecoration(
-          color: isReservationCard != null ? Colors.black : Colors.transparent,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadiusGeometry.circular(12),
-            side: BorderSide(width: 1, color: Colors.grey),
-          ),
-        ),
-        child: Column(
-          children: [
-            Icon(
-              quickActionsCard.icon,
-              color: isReservationCard != null ? Colors.white : Colors.black,
-            ),
-            SizedBox(height: 8),
-            Text(
-              quickActionsCard.name,
-              style: TextStyle(
-                color: isReservationCard != null ? Colors.white : Colors.black,
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class DashBoardStatusItemsList extends StatelessWidget {
-  const DashBoardStatusItemsList({
-    super.key,
-    required this.dashboardStatusItems,
-  });
-
-  final List<DashboardStatus> dashboardStatusItems;
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      children: dashboardStatusItems.map((status) {
-        return Expanded(
-          child: Container(
-            margin: const EdgeInsets.symmetric(horizontal: 4),
-            child: BasicInformationBlockItem(dashboardStatus: status),
-          ),
-        );
-      }).toList(),
     );
   }
 }
