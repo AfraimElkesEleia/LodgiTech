@@ -8,9 +8,9 @@ class DashboardScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AdapitiveLayout(
-      mobileScreen: (context) => Placeholder(),
-      tabletScreen: (context) => Placeholder(),
-      desktopScreen: (context) => DashboardDesktopLayout(),
+      mobileScreen: (c)=>Placeholder(),
+      tabletScreen: (c)=>Placeholder(),
+      desktopScreen:(c)=> DashboardDesktopLayout(),
     );
   }
 }
