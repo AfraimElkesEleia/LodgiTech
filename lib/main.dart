@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:lodgitech/core/constants/app_routes.dart';
 import 'package:lodgitech/core/routing/app_router.dart';
 
@@ -16,7 +17,10 @@ class LodgiTech extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       onGenerateRoute: appRouter.generateRoute,
       initialRoute: AppRoutes.dashboard,
-      theme: ThemeData.light().copyWith(scaffoldBackgroundColor: Colors.white),
+      theme: ThemeData.light().copyWith(
+        scaffoldBackgroundColor: Colors.white,
+        textTheme: GoogleFonts.poppinsTextTheme(),
+      ),
     );
   }
 }
