@@ -1,14 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:lodgitech/core/widgets/custom_container.dart';
+import 'package:lodgitech/core/widgets/header_of_screen.dart';
 import 'package:lodgitech/features/dashboard/data/models/dashboard_status.dart';
-import 'package:lodgitech/features/dashboard/data/models/quick_actions_card.dart';
-import 'package:lodgitech/features/dashboard/presentation/widgets/basic_information_block.dart';
-import 'package:lodgitech/features/dashboard/presentation/widgets/custom_drawer.dart';
 import 'package:lodgitech/features/dashboard/presentation/widgets/dashboard_charts_desktop_layout.dart';
 import 'package:lodgitech/features/dashboard/presentation/widgets/desktop_layout_dashboard_status_list.dart';
 import 'package:lodgitech/features/dashboard/presentation/widgets/quick_activities_and_recent_activity.dart';
-import 'package:lodgitech/features/dashboard/presentation/widgets/recent_activity_section.dart';
 
 class DashboardDesktopLayoutContent extends StatelessWidget {
   const DashboardDesktopLayoutContent({super.key});
@@ -54,33 +50,7 @@ class DashboardDesktopLayoutContent extends StatelessWidget {
       body: CustomScrollView(
         slivers: [
           SliverToBoxAdapter(
-            child: Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  const Text(
-                    "Dashboard",
-                    style: TextStyle(
-                      fontSize: 24,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  RichText(
-                    text: const TextSpan(
-                      style: TextStyle(color: Colors.black),
-                      children: [
-                        TextSpan(text: "Welcome back, "),
-                        TextSpan(
-                          text: "Hotel Administrator",
-                          style: TextStyle(fontWeight: FontWeight.bold),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ),
+            child: HeaderOfScreen(titleOfScreen: "Dashboard",),
           ),
           const SliverToBoxAdapter(child: SizedBox(height: 16)),
           SliverToBoxAdapter(

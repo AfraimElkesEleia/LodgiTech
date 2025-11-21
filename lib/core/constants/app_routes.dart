@@ -1,4 +1,4 @@
 abstract class AppRoutes {
   static const dashboard = '/dashboard';
-  static const roomMnagment = '/room_managment';
+  static const newReservation = '/new_reservation';
 }

@@ -53,8 +53,7 @@ class RoomManagementCard extends StatelessWidget {
           if (showClientInfo && room.hasClient) const SizedBox(height: 12),
 
           _buildAmenitiesWrap(),
-          const SizedBox(height: 12),
-
+          const Expanded(child: SizedBox()),
           _buildFooter(context),
         ],
       ),

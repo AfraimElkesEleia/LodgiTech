@@ -4,6 +4,7 @@ import 'package:lodgitech/features/dashboard/presentation/cubit/drawer_cubit.dar
 import 'package:lodgitech/features/dashboard/presentation/cubit/drawer_state.dart';
 import 'package:lodgitech/features/dashboard/presentation/screen/dashboard_desktop_layout_content.dart';
 import 'package:lodgitech/features/dashboard/presentation/widgets/custom_drawer.dart';
+import 'package:lodgitech/features/reservation/presentation/screens/reservation_desktop_layout.dart';
 import 'package:lodgitech/features/room_management/presentation/screens/room_managment_desktop_layout.dart';
 
 class DashboardDesktopLayout extends StatelessWidget {
@@ -13,7 +14,7 @@ class DashboardDesktopLayout extends StatelessWidget {
   Widget build(BuildContext context) {
     final List<Widget> screens = [
       DashboardDesktopLayoutContent(),
-      Placeholder(),
+      ReservationDesktopLayout(),
       RoomManagmentDesktopLayout(),
       Placeholder(),
       Placeholder(),
@@ -30,8 +31,13 @@ class DashboardDesktopLayout extends StatelessWidget {
             flex: 3,
             child: BlocBuilder<DrawerCubit, DrawerState>(
               builder: (context, state) {
-                print(state.currentIndex);
-                return screens[state.currentIndex];
+                return Padding(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 16,
+                    vertical: 8,
+                  ),
+                  child: screens[state.currentIndex],
+                );
               },
             ),
           ),
