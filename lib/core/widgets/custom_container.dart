@@ -3,13 +3,19 @@ import 'package:flutter/material.dart';
 class CustomContainer extends StatelessWidget {
   final Widget child;
   final EdgeInsets? padding;
-  const CustomContainer({super.key, required this.child, this.padding});
+  final EdgeInsets? margin;
+  const CustomContainer({
+    super.key,
+    required this.child,
+    this.padding,
+    this.margin,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Container(
       padding: padding ?? EdgeInsets.all(18),
-      margin: EdgeInsets.all(8),
+      margin: margin ?? EdgeInsets.all(8),
       decoration: ShapeDecoration(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadiusGeometry.circular(16),

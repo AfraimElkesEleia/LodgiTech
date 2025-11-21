@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lodgitech/core/widgets/header_of_screen.dart';
 import 'package:lodgitech/features/room_management/data/models/room_stats.dart';
 import 'package:lodgitech/features/room_management/data/models/room_status.dart';
 import 'package:lodgitech/features/room_management/presentation/widgets/room_managment_states.dart';
@@ -129,6 +130,9 @@ class RoomManagmentDesktopLayout extends StatelessWidget {
     return Scaffold(
       body: CustomScrollView(
         slivers: [
+          SliverToBoxAdapter(
+            child: HeaderOfScreen(titleOfScreen: "Room Managment"),
+          ),
           SliverToBoxAdapter(
             child: Row(
               children: roomStats.map((room) {

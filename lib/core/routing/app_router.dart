@@ -5,6 +5,7 @@ import 'package:lodgitech/core/di/sl.dart';
 import 'package:lodgitech/features/dashboard/domain/repositries/drawer_repositry.dart';
 import 'package:lodgitech/features/dashboard/presentation/cubit/drawer_cubit.dart';
 import 'package:lodgitech/features/dashboard/presentation/screen/dashboard_screen.dart';
+import 'package:lodgitech/features/reservation/presentation/screens/new_reservation.dart';
 
 class AppRouter {
   Route? generateRoute(RouteSettings settings) {
@@ -17,7 +18,8 @@ class AppRouter {
             child: DashboardScreen(),
           ),
         );
-
+      case AppRoutes.newReservation:
+        return MaterialPageRoute(builder: (_) => NewReservation());
     }
   }
 }
