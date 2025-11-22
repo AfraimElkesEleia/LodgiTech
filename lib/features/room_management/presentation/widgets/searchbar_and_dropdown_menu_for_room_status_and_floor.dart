@@ -11,7 +11,7 @@ class SearchbarAndDropdownMenuForRoomStatusAndFloor extends StatelessWidget {
       children: [
         CustomSearchBar(
           hintText: "Search Rooms...",
-          maxWidth: MediaQuery.sizeOf(context).width / 3,
+          maxWidth: MediaQuery.sizeOf(context).width / 4,
         ),
         SizedBox(width: 20),
         RoomStatusDropDownMenu(
@@ -22,16 +22,12 @@ class SearchbarAndDropdownMenuForRoomStatusAndFloor extends StatelessWidget {
             'Cleaning',
             'Maintenance',
           ],
+          width: MediaQuery.sizeOf(context).width / 5,
         ),
         SizedBox(width: 20),
         RoomStatusDropDownMenu(
-          statusList: [
-            'All Status',
-            'Available',
-            'Occupied',
-            'Cleaning',
-            'Maintenance',
-          ],
+          statusList: ['All Floors', '1', '2', '3', '4'],
+          width: MediaQuery.sizeOf(context).width / 7,
         ),
       ],
     );

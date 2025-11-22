@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:lodgitech/core/widgets/header_of_screen.dart';
+import 'package:lodgitech/core/herlper/spacing.dart';
 import 'package:lodgitech/features/room_management/data/models/room_stats.dart';
 import 'package:lodgitech/features/room_management/data/models/room_status.dart';
-import 'package:lodgitech/features/room_management/presentation/widgets/room_managment_states.dart';
 import 'package:lodgitech/features/room_management/presentation/widgets/room_stats_sections.dart';
 import 'package:lodgitech/features/room_management/presentation/widgets/rooms_grid_view.dart';
 import 'package:lodgitech/features/room_management/presentation/widgets/searchbar_and_dropdown_menu_for_room_status_and_floor.dart';
 
-class RoomManagmentDesktopLayout extends StatelessWidget {
-  const RoomManagmentDesktopLayout({super.key});
+class RoomManagementTabletLayout extends StatelessWidget {
+  const RoomManagementTabletLayout({super.key});
   static List<RoomStats> roomStats = [
     RoomStats(number: 7, state: Stats.total),
     RoomStats(number: 3, state: Stats.available),
@@ -16,7 +15,6 @@ class RoomManagmentDesktopLayout extends StatelessWidget {
     RoomStats(number: 1, state: Stats.cleaning),
     RoomStats(number: 1, state: Stats.maintenance),
   ];
-
   static List<Room> rooms = [
     Room(
       roomNumber: "101",
@@ -68,7 +66,6 @@ class RoomManagmentDesktopLayout extends StatelessWidget {
         Amenity.parking,
         Amenity.kitchen,
       ],
-      // No client - being cleaned
     ),
     Room(
       roomNumber: "5",
@@ -84,7 +81,6 @@ class RoomManagmentDesktopLayout extends StatelessWidget {
         Amenity.tv,
         Amenity.kitchen,
       ],
-      // No client - available
     ),
     Room(
       roomNumber: "601",
@@ -125,23 +121,17 @@ class RoomManagmentDesktopLayout extends StatelessWidget {
       ),
     ),
   ];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: CustomScrollView(
         slivers: [
-          SliverToBoxAdapter(
-            child: HeaderOfScreen(titleOfScreen: "Room Managment"),
-          ),
           RoomStatsSection(roomStats: roomStats),
-          SliverToBoxAdapter(child: SizedBox(height: 10)),
           SliverToBoxAdapter(
             child: SearchbarAndDropdownMenuForRoomStatusAndFloor(),
           ),
-          SliverToBoxAdapter(child: SizedBox(height: 14)),
-          RoomsGridView(rooms: rooms),
-          SliverToBoxAdapter(child: SizedBox(height: 20)),
+          SliverToBoxAdapter(child: verticalSpace(12)),
+          RoomsGridView(rooms: rooms, crossAxisCount: 2, aspectRatio: 1 / 1.3),
         ],
       ),
     );

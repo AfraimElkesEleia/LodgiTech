@@ -4,13 +4,14 @@ import 'package:lodgitech/features/dashboard/presentation/cubit/drawer_cubit.dar
 import 'package:lodgitech/features/dashboard/presentation/cubit/drawer_state.dart';
 import 'package:lodgitech/features/dashboard/presentation/screen/dashboard_tablet_layout_content.dart';
 import 'package:lodgitech/features/dashboard/presentation/widgets/custom_drawer.dart';
+import 'package:lodgitech/features/room_management/presentation/screens/room_management_tablet_layout.dart';
 
 class DashboardTabletLayout extends StatelessWidget {
   const DashboardTabletLayout({super.key});
   static final List<Widget> screens = [
     DashboardTabletLayoutContent(),
     Placeholder(),
-    Placeholder(),
+    RoomManagementTabletLayout(),
     Placeholder(),
     Placeholder(),
     Placeholder(),
