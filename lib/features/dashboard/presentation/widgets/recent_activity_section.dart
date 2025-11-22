@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lodgitech/core/utilities/app_styles.dart';
 import 'package:lodgitech/core/widgets/custom_container.dart';
 import 'package:lodgitech/features/dashboard/data/models/recent_activity.dart';
 import 'package:lodgitech/features/dashboard/presentation/widgets/recent_activity_item.dart';
@@ -43,14 +44,14 @@ class RecentActivitySection extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
+          Text(
             "Recent Activity",
-            style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
+            style: AppStyles.bold32Black(context).copyWith(fontSize: 18),
           ),
           const SizedBox(height: 8),
           Text(
             "Latest hotel operations and events",
-            style: TextStyle(color: Colors.grey[600], fontSize: 14),
+            style: AppStyles.normal16Grey(context).copyWith(fontSize: 14),
           ),
           const SizedBox(height: 16),
           Column(

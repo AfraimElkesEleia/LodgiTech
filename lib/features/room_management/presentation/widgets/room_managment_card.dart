@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:lodgitech/core/utilities/app_styles.dart';
 import 'package:lodgitech/features/room_management/data/models/room_status.dart';
 import 'package:lodgitech/features/room_management/presentation/widgets/details_button.dart';
 import 'package:lodgitech/features/room_management/presentation/widgets/room_status_drop_down_menu.dart';
@@ -49,7 +50,7 @@ class RoomManagementCard extends StatelessWidget {
           _buildPrice(),
           const SizedBox(height: 12),
 
-          if (showClientInfo && room.hasClient) _buildClientInfo(),
+          if (showClientInfo && room.hasClient) _buildClientInfo(context),
           if (showClientInfo && room.hasClient) const SizedBox(height: 12),
 
           _buildAmenitiesWrap(),
@@ -106,7 +107,7 @@ class RoomManagementCard extends StatelessWidget {
     );
   }
 
-  Widget _buildClientInfo() {
+  Widget _buildClientInfo(BuildContext context) {
     final client = room.client!;
     return Container(
       padding: const EdgeInsets.all(8),
@@ -119,11 +120,11 @@ class RoomManagementCard extends StatelessWidget {
         children: [
           Text(
             client.name,
-            style: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+            style: AppStyles.semiBold14Black(context).copyWith(fontSize: 13),
           ),
           Text(
             "${_formatDate(client.checkIn)} to ${_formatDate(client.checkOut)}",
-            style: const TextStyle(fontSize: 12),
+            style: AppStyles.normal16Grey(context).copyWith(fontSize: 12),
           ),
         ],
       ),
@@ -180,17 +181,17 @@ class RoomManagementCard extends StatelessWidget {
   Widget _getAmenityIcon(Amenity amenity) {
     switch (amenity) {
       case Amenity.wifi:
-        return const Icon(FontAwesomeIcons.wifi, size: 14);
+        return const Icon(FontAwesomeIcons.wifi, size: 12);
       case Amenity.tv:
-        return const Icon(FontAwesomeIcons.tv, size: 14);
+        return const Icon(FontAwesomeIcons.tv, size: 12);
       case Amenity.ac:
-        return const Icon(FontAwesomeIcons.wind, size: 14);
+        return const Icon(FontAwesomeIcons.wind, size: 12);
       case Amenity.kitchen:
-        return const Icon(FontAwesomeIcons.kitchenSet, size: 14);
+        return const Icon(FontAwesomeIcons.kitchenSet, size: 12);
       case Amenity.parking:
-        return const Icon(FontAwesomeIcons.car, size: 14);
+        return const Icon(FontAwesomeIcons.car, size: 12);
       case Amenity.pool:
-        return const Icon(FontAwesomeIcons.personSwimming, size: 14);
+        return const Icon(FontAwesomeIcons.personSwimming, size: 12);
     }
   }
 }

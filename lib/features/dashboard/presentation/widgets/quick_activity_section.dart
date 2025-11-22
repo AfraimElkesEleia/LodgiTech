@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:lodgitech/core/utilities/app_styles.dart';
 import 'package:lodgitech/core/widgets/custom_container.dart';
 import 'package:lodgitech/features/dashboard/data/models/quick_actions_card.dart';
 import 'package:lodgitech/features/dashboard/presentation/widgets/quick_action_card.dart';
 
 class QuickActivitySection extends StatelessWidget {
-  const QuickActivitySection({
-    super.key,
-  });
+  const QuickActivitySection({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +21,7 @@ class QuickActivitySection extends StatelessWidget {
           SizedBox(height: 6),
           Text(
             "Common hotel management tasks",
-            style: TextStyle(color: Colors.grey),
+            style: AppStyles.normal16Grey(context).copyWith(fontSize: 14),
           ),
           SizedBox(height: 20),
           Column(

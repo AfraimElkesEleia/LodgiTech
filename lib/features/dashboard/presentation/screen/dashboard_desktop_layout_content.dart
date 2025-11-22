@@ -36,7 +36,7 @@ class DashboardDesktopLayoutContent extends StatelessWidget {
     ),
     DashboardStatus(
       icon: FontAwesomeIcons.user,
-      name: "Active Guests", // Fixed typo: "Activ" to "Active"
+      name: "Active Guests", 
       value: "287",
       specialPart: "23 Check-ins ",
       description: "today",

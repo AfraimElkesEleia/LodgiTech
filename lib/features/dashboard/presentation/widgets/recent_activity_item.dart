@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:lodgitech/core/utilities/app_styles.dart';
 import 'package:lodgitech/core/widgets/custom_container.dart';
 import 'package:lodgitech/features/dashboard/data/models/recent_activity.dart';
 
@@ -27,7 +28,7 @@ class RecentActivityItem extends StatelessWidget {
         ),
         title: Text(
           recentActivity.title,
-          style: TextStyle(fontWeight: FontWeight.w600),
+          style: AppStyles.semiBold14Black(context).copyWith(fontSize: 13),
         ),
         subtitle: Text("Room ${recentActivity.roomNo}"),
         trailing: Row(
@@ -39,28 +40,22 @@ class RecentActivityItem extends StatelessWidget {
                 color: recentActivity.statusForeground,
                 borderRadius: BorderRadius.circular(8),
               ),
-              child: FittedBox(
-                fit: BoxFit.scaleDown,
-                child: Text(
-                  recentActivity.status,
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 12,
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
+              child: Text(
+                recentActivity.status,
+                style: AppStyles.light12Black(
+                  context,
+                ).copyWith(color: Colors.white, fontSize: 13),
               ),
             ),
             SizedBox(width: 8),
-            Icon(FontAwesomeIcons.clock, color: Colors.grey, size: 16),
+            FittedBox(
+              fit: BoxFit.scaleDown,
+              child: Icon(FontAwesomeIcons.clock, color: Colors.grey, size: 16),
+            ),
             SizedBox(width: 8),
             Text(
               recentActivity.time,
-              style: TextStyle(
-                color: Colors.grey,
-                fontSize: 16,
-                fontWeight: FontWeight.w600,
-              ),
+              style: AppStyles.normal16Grey(context).copyWith(fontSize: 13),
             ),
           ],
         ),

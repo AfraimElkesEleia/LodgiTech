@@ -17,7 +17,7 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (_) => BlocProvider(
             create: (context) =>
-                DrawerCubit(sl<DrawerRepositry>())..loadInitialData(),
+                DrawerCubit(sl<DrawerRepository>())..loadDrawerItems(),
             child: DashboardScreen(),
           ),
         );
