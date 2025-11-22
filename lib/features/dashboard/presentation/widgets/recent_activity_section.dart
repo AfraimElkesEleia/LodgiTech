@@ -51,7 +51,7 @@ class RecentActivitySection extends StatelessWidget {
           const SizedBox(height: 8),
           Text(
             "Latest hotel operations and events",
-            style: AppStyles.normal16Grey(context),
+            style: AppStyles.normal16Grey(context).copyWith(fontSize: 14),
           ),
           const SizedBox(height: 16),
           Column(
