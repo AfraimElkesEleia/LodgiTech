@@ -14,11 +14,13 @@ class CustomDrawer extends StatelessWidget {
       builder: (context, state) {
         return Drawer(
           backgroundColor: const Color(0xFFFAFAFA),
-          child: CustomScrollView(
-            slivers: [
-              _buildLogoAndTitle(),
-              _buildDrawerItemList(context, state),
-            ],
+          child: SafeArea(
+            child: CustomScrollView(
+              slivers: [
+                _buildLogoAndTitle(),
+                _buildDrawerItemList(context, state),
+              ],
+            ),
           ),
         );
       },
@@ -26,14 +28,14 @@ class CustomDrawer extends StatelessWidget {
   }
 
   SliverToBoxAdapter _buildLogoAndTitle() {
-    return SliverToBoxAdapter(
+    return const SliverToBoxAdapter(
       child: ListTile(
-        leading: const Icon(FontAwesomeIcons.hotel, size: 40),
-        title: const Text(
+        leading: Icon(FontAwesomeIcons.hotel, size: 40),
+        title: Text(
           "LodgiTech",
           style: TextStyle(fontSize: 24, fontWeight: FontWeight.w500),
         ),
-        subtitle: const Text("Management System"),
+        subtitle: Text("Management System"),
       ),
     );
   }
@@ -42,7 +44,7 @@ class CustomDrawer extends StatelessWidget {
     return SliverList.builder(
       itemCount: state.drawerItems.length,
       itemBuilder: (context, index) {
-        return GestureDetector(
+        return InkWell(
           onTap: () => context.read<DrawerCubit>().updateCurrentIndex(index),
           child: CustomDrawerItem(
             isActive: state.currentIndex == index,
