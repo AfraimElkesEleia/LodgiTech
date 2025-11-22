@@ -62,7 +62,10 @@ class ReservationDesktopLayout extends StatelessWidget {
           SliverToBoxAdapter(
             child: Row(
               children: [
-                CustomSearchBar(hintText: "Search Reservations"),
+                CustomSearchBar(
+                  hintText: "Search Reservations",
+                  maxWidth: MediaQuery.sizeOf(context).width / 3,
+                ),
                 SizedBox(width: 15),
                 StringDropDownMenu(
                   items: [

@@ -10,6 +10,8 @@ class CustomTextField extends StatelessWidget {
   final double borderRadius;
   final Color fillColor;
   final String label;
+  final int? minLines;
+  final int? maxLines;
 
   const CustomTextField({
     super.key,
@@ -22,6 +24,8 @@ class CustomTextField extends StatelessWidget {
     this.borderRadius = 16,
     this.fillColor = const Color(0xFFF3F3F5),
     required this.label,
+    this.minLines,
+    this.maxLines,
   });
 
   @override
@@ -31,6 +35,8 @@ class CustomTextField extends StatelessWidget {
       children: [
         Text(label, style: TextStyle(fontWeight: FontWeight.bold)),
         TextFormField(
+          minLines: minLines,
+          maxLines: maxLines,
           controller: controller,
           validator: validator,
           keyboardType: keyboardType,

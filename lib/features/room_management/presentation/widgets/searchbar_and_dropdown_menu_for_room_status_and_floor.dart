@@ -9,7 +9,10 @@ class SearchbarAndDropdownMenuForRoomStatusAndFloor extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        CustomSearchBar(hintText: "Search Rooms..."),
+        CustomSearchBar(
+          hintText: "Search Rooms...",
+          maxWidth: MediaQuery.sizeOf(context).width / 3,
+        ),
         SizedBox(width: 20),
         RoomStatusDropDownMenu(
           statusList: [

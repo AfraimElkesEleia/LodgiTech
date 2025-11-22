@@ -115,7 +115,6 @@ class CustomDropDownMenu<T> extends StatelessWidget {
   }
 }
 
-
 class StringDropDownMenu extends StatelessWidget {
   final List<String> items;
   final ValueChanged<String?>? onSelected;
@@ -154,33 +153,36 @@ class StringDropDownMenu extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CustomDropDownMenu<String>(
-      dropdownMenuEntries: items.map((item) {
-        return DropdownMenuEntry<String>(
-          value: valueTransformer != null ? valueTransformer!(item) : item,
-          label: item,
-          style: MenuItemButton.styleFrom(
-            backgroundColor: Colors.transparent,
-            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(8),
+    return LayoutBuilder(
+      builder: (context, constraints) => CustomDropDownMenu<String>(
+        dropdownMenuEntries: items.map((item) {
+          return DropdownMenuEntry<String>(
+            value: valueTransformer != null ? valueTransformer!(item) : item,
+            label: item,
+            style: MenuItemButton.styleFrom(
+              backgroundColor: Colors.transparent,
+              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(8),
+              ),
+              fixedSize: Size(constraints.maxWidth, 60),
             ),
-          ),
-        );
-      }).toList(),
-      onSelected: onSelected,
-      width: width,
-      leadingIcon: leadingIcon,
-      trailingIcon: trailingIcon,
-      initialSelection: initialSelection ?? items.first,
-      hintText: hintText,
-      enableSearch: enableSearch,
-      inputDecoration: inputDecoration,
-      menuStyle: menuStyle,
-      textStyle: textStyle,
-      contentPadding: contentPadding,
-      backgroundColor: backgroundColor,
-      borderRadius: borderRadius,
+          );
+        }).toList(),
+        onSelected: onSelected,
+        width: width,
+        leadingIcon: leadingIcon,
+        trailingIcon: trailingIcon,
+        initialSelection: initialSelection ?? items.first,
+        hintText: hintText,
+        enableSearch: enableSearch,
+        inputDecoration: inputDecoration,
+        menuStyle: menuStyle,
+        textStyle: textStyle,
+        contentPadding: contentPadding,
+        backgroundColor: backgroundColor,
+        borderRadius: borderRadius,
+      ),
     );
   }
 }

@@ -5,6 +5,7 @@ class CustomSearchBar extends StatelessWidget {
   final String hintText;
   final double maxWidth;
   final double minHeight;
+  final double minWidth;
   final IconData leadingIcon;
   final Color backgroundColor;
   final double borderRadius;
@@ -22,6 +23,7 @@ class CustomSearchBar extends StatelessWidget {
     this.backgroundColor = const Color(0xFFF3F3F5),
     this.borderRadius = 12,
     this.elevation = 0,
+    this.minWidth = 100,
     this.controller,
     this.onChanged,
     this.onSubmitted,
@@ -36,7 +38,11 @@ class CustomSearchBar extends StatelessWidget {
       onSubmitted: onSubmitted,
       backgroundColor: WidgetStatePropertyAll(backgroundColor),
       elevation: WidgetStatePropertyAll(elevation),
-      constraints: BoxConstraints(maxWidth: maxWidth, minHeight: minHeight),
+      constraints: BoxConstraints(
+        maxWidth: maxWidth,
+        minHeight: minHeight,
+        minWidth: maxWidth,
+      ),
       leading: Icon(leadingIcon, color: Colors.grey),
       shape: WidgetStatePropertyAll(
         RoundedRectangleBorder(
