@@ -81,7 +81,7 @@ class GuestManagementDesktop extends StatelessWidget {
           SliverToBoxAdapter(
             child: Row(
               children: [
-                CustomSearchBar(),
+                CustomSearchBar(maxWidth: MediaQuery.sizeOf(context).width / 3),
                 horizontalSpace(12),
                 StringDropDownMenu(
                   items: [
