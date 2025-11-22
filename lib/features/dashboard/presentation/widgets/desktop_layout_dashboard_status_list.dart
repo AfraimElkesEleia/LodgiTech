@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:lodgitech/features/dashboard/data/models/dashboard_status.dart';
 import 'package:lodgitech/features/dashboard/presentation/widgets/basic_information_block.dart';
@@ -17,8 +16,11 @@ class DashBoardStatusItemsList extends StatelessWidget {
       children: dashboardStatusItems.map((status) {
         return Expanded(
           child: Container(
-            margin: const EdgeInsets.symmetric(horizontal: 4),
-            child: BasicInformationBlockItem(dashboardStatus: status),
+            margin: const EdgeInsets.only(right: 4),
+            child: AspectRatio(
+              aspectRatio: 2 / 1.5,
+              child: BasicInformationBlockItem(dashboardStatus: status),
+            ),
           ),
         );
       }).toList(),

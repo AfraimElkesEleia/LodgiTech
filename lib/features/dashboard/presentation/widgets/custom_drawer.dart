@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:lodgitech/core/utilities/app_styles.dart';
 import 'package:lodgitech/features/dashboard/presentation/cubit/drawer_cubit.dart';
 import 'package:lodgitech/features/dashboard/presentation/cubit/drawer_state.dart';
 import 'package:lodgitech/features/dashboard/presentation/widgets/custom_drawer_item.dart';
@@ -17,7 +18,7 @@ class CustomDrawer extends StatelessWidget {
           child: SafeArea(
             child: CustomScrollView(
               slivers: [
-                _buildLogoAndTitle(),
+                _buildLogoAndTitle(context),
                 _buildDrawerItemList(context, state),
               ],
             ),
@@ -27,14 +28,11 @@ class CustomDrawer extends StatelessWidget {
     );
   }
 
-  SliverToBoxAdapter _buildLogoAndTitle() {
-    return const SliverToBoxAdapter(
+  SliverToBoxAdapter _buildLogoAndTitle(BuildContext context) {
+    return SliverToBoxAdapter(
       child: ListTile(
         leading: Icon(FontAwesomeIcons.hotel, size: 40),
-        title: Text(
-          "LodgiTech",
-          style: TextStyle(fontSize: 24, fontWeight: FontWeight.w500),
-        ),
+        title: Text("LodgiTech", style: AppStyles.semiBold24Black(context)),
         subtitle: Text("Management System"),
       ),
     );
