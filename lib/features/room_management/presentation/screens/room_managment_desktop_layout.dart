@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:lodgitech/core/widgets/header_of_screen.dart';
 import 'package:lodgitech/features/room_management/data/models/room_stats.dart';
 import 'package:lodgitech/features/room_management/data/models/room_status.dart';
-import 'package:lodgitech/features/room_management/presentation/widgets/room_managment_states.dart';
 import 'package:lodgitech/features/room_management/presentation/widgets/room_stats_sections.dart';
 import 'package:lodgitech/features/room_management/presentation/widgets/rooms_grid_view.dart';
 import 'package:lodgitech/features/room_management/presentation/widgets/searchbar_and_dropdown_menu_for_room_status_and_floor.dart';
@@ -26,7 +25,6 @@ class RoomManagmentDesktopLayout extends StatelessWidget {
       pricePerNight: 120,
       status: RoomStatus.available,
       amenities: [Amenity.wifi, Amenity.tv],
-      // No client - available room
     ),
     Room(
       roomNumber: "205",
@@ -52,7 +50,6 @@ class RoomManagmentDesktopLayout extends StatelessWidget {
       pricePerNight: 350,
       status: RoomStatus.maintenance,
       amenities: [Amenity.wifi, Amenity.tv, Amenity.ac, Amenity.kitchen],
-      // No client - under maintenance
     ),
     Room(
       roomNumber: "408",
@@ -68,7 +65,6 @@ class RoomManagmentDesktopLayout extends StatelessWidget {
         Amenity.parking,
         Amenity.kitchen,
       ],
-      // No client - being cleaned
     ),
     Room(
       roomNumber: "5",
@@ -84,7 +80,6 @@ class RoomManagmentDesktopLayout extends StatelessWidget {
         Amenity.tv,
         Amenity.kitchen,
       ],
-      // No client - available
     ),
     Room(
       roomNumber: "601",

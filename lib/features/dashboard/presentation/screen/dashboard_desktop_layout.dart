@@ -7,6 +7,7 @@ import 'package:lodgitech/features/dashboard/presentation/widgets/custom_drawer.
 import 'package:lodgitech/features/guest_managment/presentation/screens/guest_management_desktop.dart';
 import 'package:lodgitech/features/reservation/presentation/screens/reservation_desktop_layout.dart';
 import 'package:lodgitech/features/room_management/presentation/screens/room_managment_desktop_layout.dart';
+import 'package:lodgitech/features/suppliers/presentation/screen/suppliers_desktop_layout.dart';
 
 class DashboardDesktopLayout extends StatelessWidget {
   const DashboardDesktopLayout({super.key});
@@ -19,7 +20,7 @@ class DashboardDesktopLayout extends StatelessWidget {
       RoomManagmentDesktopLayout(),
       GuestManagementDesktop(),
       Placeholder(),
-      Placeholder(),
+      SuppliersDesktopLayout(),
       Placeholder(),
     ];
 

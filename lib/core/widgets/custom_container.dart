@@ -5,12 +5,14 @@ class CustomContainer extends StatelessWidget {
   final EdgeInsets? padding;
   final EdgeInsets? margin;
   final double? width;
+  final double? height;
   const CustomContainer({
     super.key,
     required this.child,
     this.padding,
     this.margin,
     this.width,
+    this.height
   });
 
   @override
@@ -19,6 +21,7 @@ class CustomContainer extends StatelessWidget {
       padding: padding ?? EdgeInsets.all(18),
       margin: margin ?? EdgeInsets.all(8),
       width: width,
+      height: height,
       decoration: ShapeDecoration(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadiusGeometry.circular(16),
