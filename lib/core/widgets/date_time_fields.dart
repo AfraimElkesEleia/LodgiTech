@@ -20,6 +20,7 @@ class CustomDateField extends StatelessWidget {
     return TextFormField(
       readOnly: true,
       controller: controller,
+      initialValue: "${date!.month}/${date!.day}/${date!.year}",
       decoration: InputDecoration(
         suffixIcon: IconButton(
           onPressed: () async {

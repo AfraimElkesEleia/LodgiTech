@@ -7,7 +7,11 @@ abstract class AppStyles {
     fontWeight: FontWeight.bold,
     color: Colors.black,
   );
-
+  static TextStyle bold16Black(BuildContext context) => TextStyle(
+    fontSize: getResposiveFontSize(context, fontSize: 16),
+    fontWeight: FontWeight.bold,
+    color: Colors.black,
+  );
   static TextStyle semiBold18Black(BuildContext context) => TextStyle(
     fontSize: getResposiveFontSize(context, fontSize: 18),
     fontWeight: FontWeightHelper.semiBold,
@@ -38,6 +42,11 @@ abstract class AppStyles {
   static TextStyle semiBold14Black(BuildContext context) => TextStyle(
     fontSize: getResposiveFontSize(context, fontSize: 14),
     fontWeight: FontWeightHelper.semiBold,
+  );
+  static TextStyle extraLight14Grey(BuildContext context) => TextStyle(
+    fontSize: getResposiveFontSize(context, fontSize: 14),
+    fontWeight: FontWeightHelper.extraLight,
+    color: Colors.grey,
   );
 }
 

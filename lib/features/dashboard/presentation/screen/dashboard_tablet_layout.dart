@@ -5,6 +5,7 @@ import 'package:lodgitech/features/dashboard/presentation/cubit/drawer_state.dar
 import 'package:lodgitech/features/dashboard/presentation/screen/dashboard_tablet_layout_content.dart';
 import 'package:lodgitech/features/dashboard/presentation/widgets/custom_drawer.dart';
 import 'package:lodgitech/features/room_management/presentation/screens/room_management_tablet_layout.dart';
+import 'package:lodgitech/features/suppliers/presentation/screen/suppliers_desktop_layout.dart';
 
 class DashboardTabletLayout extends StatelessWidget {
   const DashboardTabletLayout({super.key});
@@ -14,7 +15,7 @@ class DashboardTabletLayout extends StatelessWidget {
     RoomManagementTabletLayout(),
     Placeholder(),
     Placeholder(),
-    Placeholder(),
+    SuppliersDesktopLayout(),
     Placeholder(),
   ];
   @override
