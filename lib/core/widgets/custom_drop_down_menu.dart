@@ -165,7 +165,7 @@ class StringDropDownMenu extends StatelessWidget {
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(8),
               ),
-              fixedSize: Size(constraints.maxWidth, 60),
+              fixedSize: Size(width ?? constraints.maxWidth, 60),
             ),
           );
         }).toList(),
