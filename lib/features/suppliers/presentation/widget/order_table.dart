@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:lodgitech/features/suppliers/data/order_model.dart'; 
+import 'package:lodgitech/features/suppliers/data/order_model.dart';
 
 class OrdersTable extends StatelessWidget {
   final List<OrderModel> orders;
   final void Function(OrderModel) onView;
+  final void Function(OrderModel) onEdit;
 
   const OrdersTable({
     super.key,
     required this.orders,
     required this.onView,
+    required this.onEdit,
   });
 
   @override
@@ -48,10 +50,20 @@ class OrdersTable extends StatelessWidget {
         DataCell(Text(_formatDate(o.deliveryDate))),
         DataCell(_statusChip(o.status)),
         DataCell(Text("\$${o.total.toStringAsFixed(2)}")),
+
+        /// Actions (View + Edit)
         DataCell(
-          IconButton(
-            icon: const Icon(FontAwesomeIcons.eye, color: Colors.blue),
-            onPressed: () => onView(o),
+          Row(
+            children: [
+              IconButton(
+                icon: const Icon(FontAwesomeIcons.eye, size: 18, color: Colors.blue),
+                onPressed: () => onView(o),
+              ),
+              IconButton(
+                icon: const Icon(FontAwesomeIcons.penToSquare, size: 18, color: Colors.green),
+                onPressed: () => onEdit(o),
+              ),
+            ],
           ),
         ),
       ],
