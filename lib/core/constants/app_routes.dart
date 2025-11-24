@@ -8,4 +8,5 @@ abstract class AppRoutes {
   static const supplierProfile = '/supplier_info';
   static const newSupplier = '/new_supplier';
   static const invoiceDetails = '/invoice_details';
+  static const taskScreen = '/task_screen';
 }

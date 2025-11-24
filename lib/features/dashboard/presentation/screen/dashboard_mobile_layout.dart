@@ -6,6 +6,7 @@ import 'package:lodgitech/features/dashboard/presentation/screen/dashboard_mobil
 import 'package:lodgitech/features/dashboard/presentation/widgets/custom_drawer.dart';
 import 'package:lodgitech/features/room_management/presentation/screens/room_managemnet_mobile_layout.dart';
 import 'package:lodgitech/features/suppliers/presentation/screen/suppliers_desktop_layout.dart';
+import 'package:lodgitech/features/task_management/presentation/screens/task_management_desktop_layout.dart';
 
 class DashboardMobileLayout extends StatelessWidget {
   DashboardMobileLayout({super.key});
@@ -19,7 +20,7 @@ class DashboardMobileLayout extends StatelessWidget {
     Placeholder(),
     Placeholder(),
     SuppliersDesktopLayout(),
-    Placeholder(),
+    TasksDesktopLayout(),
     Placeholder(),
   ];
 
