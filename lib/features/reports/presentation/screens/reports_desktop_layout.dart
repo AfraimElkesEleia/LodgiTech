@@ -108,7 +108,7 @@ class _ReportsDesktopLayoutState extends State<ReportsDesktopLayout> {
                   ),
                   verticalSpace(10),
                   AspectRatio(
-                    aspectRatio: 2 / 0.8,
+                    aspectRatio: 2.3 / 0.8,
                     child: _buildSelectedChart(),
                   ),
                 ],
