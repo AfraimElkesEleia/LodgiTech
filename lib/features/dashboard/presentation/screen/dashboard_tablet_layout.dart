@@ -17,6 +17,7 @@ class DashboardTabletLayout extends StatelessWidget {
     Placeholder(),
     SuppliersDesktopLayout(),
     Placeholder(),
+    Placeholder(),
   ];
   @override
   Widget build(BuildContext context) {

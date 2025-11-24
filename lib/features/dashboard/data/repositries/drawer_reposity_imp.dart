@@ -22,18 +22,13 @@ class DrawerRepositoryImpl implements DrawerRepository {
         name: "Guest Management",
         icon: FontAwesomeIcons.users,
       ),
-      CustomDrawerItemModel(
-        name: "Billing",
-        icon: FontAwesomeIcons.moneyBill,
-      ),
+      CustomDrawerItemModel(name: "Billing", icon: FontAwesomeIcons.moneyBill),
       CustomDrawerItemModel(
         name: "Suppliers",
         icon: FontAwesomeIcons.truckField,
       ),
-      CustomDrawerItemModel(
-        name: "Reports",
-        icon: FontAwesomeIcons.scroll,
-      ),
+      CustomDrawerItemModel(name: "Tasks", icon: FontAwesomeIcons.listCheck),
+      CustomDrawerItemModel(name: "Reports", icon: FontAwesomeIcons.scroll),
     ];
   }
 }

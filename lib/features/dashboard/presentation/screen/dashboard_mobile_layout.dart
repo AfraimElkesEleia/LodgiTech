@@ -20,6 +20,7 @@ class DashboardMobileLayout extends StatelessWidget {
     Placeholder(),
     SuppliersDesktopLayout(),
     Placeholder(),
+    Placeholder(),
   ];
 
   @override
