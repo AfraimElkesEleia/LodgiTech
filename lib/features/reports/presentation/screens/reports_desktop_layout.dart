@@ -6,10 +6,13 @@ import 'package:lodgitech/core/widgets/custom_drop_down_menu.dart';
 import 'package:lodgitech/core/widgets/header_of_screen.dart';
 import 'package:lodgitech/features/reports/data/models/report_analysis.dart';
 import 'package:lodgitech/features/reports/presentation/widgets/customer_analytics_chart_widget.dart';
+import 'package:lodgitech/features/reports/presentation/widgets/customer_segmentation_section.dart';
 import 'package:lodgitech/features/reports/presentation/widgets/occupancy_chart_widget.dart';
 import 'package:lodgitech/features/reports/presentation/widgets/report_data_list.dart';
+import 'package:lodgitech/features/reports/presentation/widgets/report_summary_section.dart';
 import 'package:lodgitech/features/reports/presentation/widgets/revenue_chart_widget.dart';
 import 'package:lodgitech/features/reports/presentation/widgets/room_performance_chart_widget.dart';
+import 'package:lodgitech/features/reports/presentation/widgets/room_type_performance_section.dart';
 
 class ReportsDesktopLayout extends StatefulWidget {
   const ReportsDesktopLayout({super.key});
@@ -108,9 +111,39 @@ class _ReportsDesktopLayoutState extends State<ReportsDesktopLayout> {
                   ),
                   verticalSpace(10),
                   AspectRatio(
-                    aspectRatio: 2.3 / 0.8,
+                    aspectRatio: 2.3 / 0.9,
                     child: _buildSelectedChart(),
                   ),
+                  verticalSpace(10),
+                ],
+              ),
+            ),
+          ),
+          SliverToBoxAdapter(
+            child: Row(
+              children: [
+                Expanded(child: RoomTypePerformanceSection()),
+                horizontalSpace(8),
+                Expanded(child: CustomerSegmentationSection()),
+              ],
+            ),
+          ),
+          SliverToBoxAdapter(child: verticalSpace(12)),
+          SliverToBoxAdapter(
+            child: CustomContainer(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    "Quick Report Actions",
+                    style: AppStyles.semiBold14Black(context),
+                  ),
+                  Text(
+                    "Generate common reports with one click",
+                    style: AppStyles.extraLight14Grey(context),
+                  ),
+                  verticalSpace(10),
+                  ReportSummarySection(),
                 ],
               ),
             ),
