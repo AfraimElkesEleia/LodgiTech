@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:lodgitech/core/herlper/spacing.dart';
 import 'package:lodgitech/core/widgets/custom_drop_down_menu.dart';
 import 'package:lodgitech/core/widgets/custom_text_field.dart';
-import 'package:lodgitech/core/widgets/date_time_fields.dart';
+import 'package:lodgitech/core/widgets/custom_date_field.dart';
 
 class AddNewGuest extends StatelessWidget {
   const AddNewGuest({super.key});

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:lodgitech/core/widgets/date_time_fields.dart';
+import 'package:lodgitech/core/widgets/custom_date_field.dart';
 import 'package:lodgitech/core/herlper/spacing.dart';
 
 class OrderDatesSection extends StatelessWidget {

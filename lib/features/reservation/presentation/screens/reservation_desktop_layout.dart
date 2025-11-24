@@ -123,6 +123,10 @@ class ReservationDesktopLayout extends StatelessWidget {
                     reservations: reservations,
                     onEdit: (reservation) {
                       print("Edit ${reservation.id}");
+                      context.pushNamed(
+                        AppRoutes.newReservation,
+                        arguments: reservation,
+                      );
                     },
                     onDelete: (reservation) {
                       print("Delete ${reservation.id}");

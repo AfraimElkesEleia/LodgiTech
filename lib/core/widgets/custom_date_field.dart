@@ -5,13 +5,13 @@ class CustomDateField extends StatelessWidget {
   final String label;
   final DateTime? date;
   final void Function(DateTime) onDateSelected;
-  final TextEditingController? controller;
+  final String? Function(String?)? validator;
 
   const CustomDateField({
     super.key,
     required this.label,
     this.date,
-    this.controller,
+    this.validator,
     required this.onDateSelected,
   });
 
@@ -19,12 +19,17 @@ class CustomDateField extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextFormField(
       readOnly: true,
-      controller: controller,
-      initialValue: "${date!.month}/${date!.day}/${date!.year}",
+      validator: validator,
+      controller: TextEditingController(
+        text: date == null
+            ? ""
+            : "${date!.month}/${date!.day}/${date!.year}",
+      ),
       decoration: InputDecoration(
         suffixIcon: IconButton(
           onPressed: () async {
             DateTime now = DateTime.now();
+
             final selected = await showDatePicker(
               context: context,
               initialDate: date ?? now,
@@ -36,12 +41,10 @@ class CustomDateField extends StatelessWidget {
               onDateSelected(selected);
             }
           },
-          icon: Icon(FontAwesomeIcons.calendar),
+          icon: const Icon(FontAwesomeIcons.calendar),
         ),
         labelText: label,
-        hintText: date == null
-            ? "Select date"
-            : "${date!.month}/${date!.day}/${date!.year}",
+        hintText: "Select date",
         filled: true,
         fillColor: const Color(0xFFF3F3F5),
 
