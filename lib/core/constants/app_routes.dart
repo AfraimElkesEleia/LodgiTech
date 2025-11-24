@@ -7,4 +7,5 @@ abstract class AppRoutes {
   static const newOrderScreen = '/new_order';
   static const supplierProfile = '/supplier_info';
   static const newSupplier = '/new_supplier';
+  static const invoiceDetails = '/invoice_details';
 }

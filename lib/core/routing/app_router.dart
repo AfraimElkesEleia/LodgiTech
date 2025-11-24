@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lodgitech/core/constants/app_routes.dart';
 import 'package:lodgitech/core/di/sl.dart';
+import 'package:lodgitech/features/billing/data/models/invoice.dart';
+import 'package:lodgitech/features/billing/presentation/screens/invoice_details.dart';
 import 'package:lodgitech/features/dashboard/domain/repositries/drawer_repositry.dart';
 import 'package:lodgitech/features/dashboard/presentation/cubit/drawer_cubit.dart';
 import 'package:lodgitech/features/dashboard/presentation/screen/dashboard_screen.dart';
@@ -52,6 +54,11 @@ class AppRouter {
             settings.arguments as SupplierModel?;
         return MaterialPageRoute(
           builder: (_) => NewSupplierScreen(supplier: supplierModel),
+        );
+      case AppRoutes.invoiceDetails:
+        final Invoice invoice = settings.arguments as Invoice;
+        return MaterialPageRoute(
+          builder: (_) => InvoiceDetailsScreen(invoice: invoice),
         );
     }
   }

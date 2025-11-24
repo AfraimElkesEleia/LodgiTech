@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:lodgitech/features/billing/presentation/screens/billing_desktop_layout.dart';
 import 'package:lodgitech/features/dashboard/presentation/cubit/drawer_cubit.dart';
 import 'package:lodgitech/features/dashboard/presentation/cubit/drawer_state.dart';
 import 'package:lodgitech/features/dashboard/presentation/screen/dashboard_desktop_layout_content.dart';
@@ -9,7 +10,6 @@ import 'package:lodgitech/features/reports/presentation/screens/reports_desktop_
 import 'package:lodgitech/features/reservation/presentation/screens/reservation_desktop_layout.dart';
 import 'package:lodgitech/features/room_management/presentation/screens/room_managment_desktop_layout.dart';
 import 'package:lodgitech/features/suppliers/presentation/screen/suppliers_desktop_layout.dart';
-import 'package:lodgitech/features/task_management/presentation/screens/task_management.dart';
 
 class DashboardDesktopLayout extends StatelessWidget {
   const DashboardDesktopLayout({super.key});
@@ -21,7 +21,7 @@ class DashboardDesktopLayout extends StatelessWidget {
       ReservationDesktopLayout(),
       RoomManagmentDesktopLayout(),
       GuestManagementDesktop(),
-      Placeholder(),
+      BillingDesktopLayout(),
       SuppliersDesktopLayout(),
       Placeholder(),
       ReportsDesktopLayout(),
