@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:lodgitech/features/billing/presentation/screens/billing_desktop_layout.dart';
 import 'package:lodgitech/features/dashboard/presentation/cubit/drawer_cubit.dart';
 import 'package:lodgitech/features/dashboard/presentation/cubit/drawer_state.dart';
 import 'package:lodgitech/features/dashboard/presentation/screen/dashboard_tablet_layout_content.dart';
 import 'package:lodgitech/features/dashboard/presentation/widgets/custom_drawer.dart';
+import 'package:lodgitech/features/guest_managment/presentation/screens/guest_management_desktop.dart';
 import 'package:lodgitech/features/reservation/presentation/screens/reservation_desktop_layout.dart';
 import 'package:lodgitech/features/room_management/presentation/screens/room_management_tablet_layout.dart';
 import 'package:lodgitech/features/suppliers/presentation/screen/suppliers_desktop_layout.dart';
@@ -15,8 +17,8 @@ class DashboardTabletLayout extends StatelessWidget {
     DashboardTabletLayoutContent(),
     ReservationDesktopLayout(),
     RoomManagementTabletLayout(),
-    Placeholder(),
-    Placeholder(),
+    GuestManagementDesktop(),
+    BillingDesktopLayout(),
     SuppliersDesktopLayout(),
     TasksDesktopLayout(),
     Placeholder(),

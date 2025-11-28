@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:lodgitech/core/constants/app_routes.dart';
 import 'package:lodgitech/core/herlper/spacing.dart';
 import 'package:lodgitech/core/routing/navigation.dart';
@@ -9,9 +8,11 @@ import 'package:lodgitech/core/widgets/custom_search_bar.dart';
 import 'package:lodgitech/core/widgets/header_of_screen.dart';
 import 'package:lodgitech/features/guest_managment/data/models/guest.dart';
 import 'package:lodgitech/features/guest_managment/presentation/widgets/guest_table.dart';
+import 'package:lodgitech/features/guest_managment/presentation/widgets/new_guest_button.dart';
 
 class GuestManagementDesktop extends StatelessWidget {
   const GuestManagementDesktop({super.key});
+
   static final List<Guest> guests = [
     Guest(
       id: "G001",
@@ -77,40 +78,61 @@ class GuestManagementDesktop extends StatelessWidget {
           SliverToBoxAdapter(
             child: HeaderOfScreen(titleOfScreen: "Guest Management"),
           ),
+
           SliverToBoxAdapter(
-            child: Row(
-              children: [
-                CustomSearchBar(maxWidth: MediaQuery.sizeOf(context).width / 3),
-                horizontalSpace(12),
-                StringDropDownMenu(
-                  items: [
-                    'All Status',
-                    'Checked In',
-                    'Reservation',
-                    'Check Out',
-                  ],
-                ),
-                Expanded(child: SizedBox()),
-                ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.black,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadiusGeometry.circular(8),
-                    ),
-                    padding: EdgeInsets.all(16),
-                  ),
-                  onPressed: () {
-                    context.pushNamed(AppRoutes.newGuest);
-                  },
-                  child: Row(
+            child: Builder(
+              builder: (context) {
+                final width = MediaQuery.of(context).size.width;
+
+                if (width >= 1300) {
+                  return Row(
                     children: [
-                      Icon(FontAwesomeIcons.plus, color: Colors.white),
-                      horizontalSpace(8),
-                      Text("Add Guest", style: TextStyle(color: Colors.white)),
+                      CustomSearchBar(maxWidth: width / 3),
+                      horizontalSpace(12),
+                      StringDropDownMenu(
+                        items: [
+                          'All Status',
+                          'Checked In',
+                          'Reserved',
+                          'Checked Out',
+                        ],
+                      ),
+                      Expanded(child: SizedBox()),
+                      NewGuestButton(
+                        onPressed: () => pressNewGuestButton(context),
+                      ),
                     ],
-                  ),
-                ),
-              ],
+                  );
+                }
+                return Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      children: [
+                        Expanded(
+                          child: CustomSearchBar(maxWidth: double.infinity),
+                        ),
+                        horizontalSpace(12),
+                        StringDropDownMenu(
+                          items: [
+                            'All Status',
+                            'Checked In',
+                            'Reserved',
+                            'Checked Out',
+                          ],
+                        ),
+                      ],
+                    ),
+                    verticalSpace(12),
+                    SizedBox(
+                      width: double.infinity,
+                      child: NewGuestButton(
+                        onPressed: () => pressNewGuestButton(context),
+                      ),
+                    ),
+                  ],
+                );
+              },
             ),
           ),
           SliverToBoxAdapter(
@@ -146,4 +168,7 @@ class GuestManagementDesktop extends StatelessWidget {
       ),
     );
   }
+
+  void pressNewGuestButton(BuildContext context) =>
+      context.pushNamed(AppRoutes.newGuest);
 }
