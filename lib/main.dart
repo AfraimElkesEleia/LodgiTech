@@ -20,7 +20,7 @@ class LodgiTech extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       onGenerateRoute: appRouter.generateRoute,
-      initialRoute: AppRoutes.dashboard,
+      initialRoute: AppRoutes.loginScreen,
       theme: ThemeData.light().copyWith(
         scaffoldBackgroundColor: Colors.white,
         textTheme: GoogleFonts.poppinsTextTheme(),
