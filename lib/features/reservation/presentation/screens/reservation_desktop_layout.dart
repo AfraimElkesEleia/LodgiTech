@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:lodgitech/core/constants/app_routes.dart';
 import 'package:lodgitech/core/herlper/spacing.dart';
 import 'package:lodgitech/core/routing/navigation.dart';
@@ -8,6 +7,7 @@ import 'package:lodgitech/core/widgets/custom_drop_down_menu.dart';
 import 'package:lodgitech/core/widgets/custom_search_bar.dart';
 import 'package:lodgitech/core/widgets/header_of_screen.dart';
 import 'package:lodgitech/features/reservation/data/models/reservations.dart';
+import 'package:lodgitech/features/reservation/presentation/widgets/new_reservation_button.dart';
 import 'package:lodgitech/features/reservation/presentation/widgets/reservation_table.dart';
 
 class ReservationDesktopLayout extends StatelessWidget {
@@ -60,47 +60,70 @@ class ReservationDesktopLayout extends StatelessWidget {
             child: HeaderOfScreen(titleOfScreen: "Reservation"),
           ),
           SliverToBoxAdapter(
-            child: Row(
-              children: [
-                CustomSearchBar(
-                  hintText: "Search Reservations",
-                  maxWidth: MediaQuery.sizeOf(context).width / 3,
-                ),
-                SizedBox(width: 15),
-                StringDropDownMenu(
-                  items: [
-                    "All Status",
-                    "Confirmed",
-                    "Pending",
-                    "Checked In",
-                    "Checked Out",
-                    "Cancelled",
-                  ],
-                ),
-                Expanded(child: SizedBox()),
-                ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.black,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadiusGeometry.circular(8),
-                    ),
-                    padding: EdgeInsets.all(16),
-                  ),
-                  onPressed: () {
-                    context.pushNamed(AppRoutes.newReservation);
-                  },
-                  child: Row(
+            child: Builder(
+              builder: (context) {
+                final width = MediaQuery.of(context).size.width;
+
+                if (width >= 1300) {
+                  return Row(
                     children: [
-                      Icon(FontAwesomeIcons.plus, color: Colors.white),
-                      horizontalSpace(8),
-                      Text(
-                        "New Reservation",
-                        style: TextStyle(color: Colors.white),
+                      CustomSearchBar(
+                        hintText: "Search Reservations",
+                        maxWidth: width / 3,
+                      ),
+                      SizedBox(width: 15),
+                      StringDropDownMenu(
+                        items: [
+                          "All Status",
+                          "Confirmed",
+                          "Pending",
+                          "Checked In",
+                          "Checked Out",
+                          "Cancelled",
+                        ],
+                      ),
+                      Expanded(child: SizedBox()),
+                      NewReservationButton(
+                        onPressed: () => pressOnNewReservationButton(context),
                       ),
                     ],
-                  ),
-                ),
-              ],
+                  );
+                }
+
+                return Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      children: [
+                        Expanded(
+                          child: CustomSearchBar(
+                            hintText: "Search Reservations",
+                            maxWidth: double.infinity,
+                          ),
+                        ),
+                        SizedBox(width: 12),
+                        StringDropDownMenu(
+                          items: [
+                            "All Status",
+                            "Confirmed",
+                            "Pending",
+                            "Checked In",
+                            "Checked Out",
+                            "Cancelled",
+                          ],
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: 15),
+                    SizedBox(
+                      width: double.infinity,
+                      child: NewReservationButton(
+                        onPressed: () => pressOnNewReservationButton(context),
+                      ),
+                    ),
+                  ],
+                );
+              },
             ),
           ),
           SliverToBoxAdapter(
@@ -140,6 +163,9 @@ class ReservationDesktopLayout extends StatelessWidget {
       ),
     );
   }
+
+  Future<dynamic> pressOnNewReservationButton(BuildContext context) =>
+      context.pushNamed(AppRoutes.newReservation);
 }
 
 class _HeaderCell extends StatelessWidget {

@@ -56,9 +56,14 @@ class TaskCard extends StatelessWidget {
                           color: _getTaskTypeColor(task.type),
                           borderRadius: BorderRadius.circular(12),
                         ),
-                        child: Text(
-                          task.type,
-                          style: AppStyles.semiBold14Black(context).copyWith(fontSize: 12,color: Colors.white),
+                        child: FittedBox(
+                          fit: BoxFit.scaleDown,
+                          child: Text(
+                            task.type,
+                            style: AppStyles.semiBold14Black(
+                              context,
+                            ).copyWith(fontSize: 10, color: Colors.white),
+                          ),
                         ),
                       ),
                     ],

@@ -4,6 +4,7 @@ import 'package:lodgitech/features/dashboard/presentation/cubit/drawer_cubit.dar
 import 'package:lodgitech/features/dashboard/presentation/cubit/drawer_state.dart';
 import 'package:lodgitech/features/dashboard/presentation/screen/dashboard_mobile_layout_content.dart';
 import 'package:lodgitech/features/dashboard/presentation/widgets/custom_drawer.dart';
+import 'package:lodgitech/features/reservation/presentation/screens/reservation_desktop_layout.dart';
 import 'package:lodgitech/features/room_management/presentation/screens/room_managemnet_mobile_layout.dart';
 import 'package:lodgitech/features/suppliers/presentation/screen/suppliers_desktop_layout.dart';
 import 'package:lodgitech/features/task_management/presentation/screens/task_management_desktop_layout.dart';
@@ -15,7 +16,7 @@ class DashboardMobileLayout extends StatelessWidget {
 
   static final List<Widget> screens = [
     DashboardMobileLayoutContent(),
-    Placeholder(),
+    ReservationDesktopLayout(),
     RoomManagementMobileLayout(),
     Placeholder(),
     Placeholder(),

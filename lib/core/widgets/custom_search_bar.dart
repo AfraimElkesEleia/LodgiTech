@@ -17,7 +17,7 @@ class CustomSearchBar extends StatelessWidget {
   const CustomSearchBar({
     super.key,
     this.hintText = "Search...",
-    this.maxWidth = 500,
+    this.maxWidth = 200,
     this.minHeight = 48,
     this.leadingIcon = FontAwesomeIcons.magnifyingGlass,
     this.backgroundColor = const Color(0xFFF3F3F5),
