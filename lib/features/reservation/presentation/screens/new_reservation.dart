@@ -1,149 +1,158 @@
 import 'package:flutter/material.dart';
-import 'package:lodgitech/core/herlper/spacing.dart';
-import 'package:lodgitech/core/widgets/custom_drop_down_menu.dart';
-import 'package:lodgitech/core/widgets/custom_text_field.dart';
-import 'package:lodgitech/core/widgets/date_time_fields.dart';
+import 'package:lodgitech/features/reservation/data/models/reservations.dart';
+import 'package:lodgitech/features/reservation/presentation/widgets/check_in_out_section.dart';
+import 'package:lodgitech/features/reservation/presentation/widgets/guest_info_section.dart';
+import 'package:lodgitech/features/reservation/presentation/widgets/nights_summary.dart';
+import 'package:lodgitech/features/reservation/presentation/widgets/phone_and_guest_section.dart';
+import 'package:lodgitech/features/reservation/presentation/widgets/reservation_form_header.dart';
+import 'package:lodgitech/features/reservation/presentation/widgets/room_and_requests_section.dart';
+import 'package:lodgitech/features/reservation/presentation/widgets/submit_reservation_button.dart';
 
-class NewReservation extends StatelessWidget {
-  const NewReservation({super.key});
+class ReservationFormScreen extends StatefulWidget {
+  final Reservation? reservation;
+
+  const ReservationFormScreen({super.key, this.reservation});
+
+  @override
+  State<ReservationFormScreen> createState() => _ReservationFormScreenState();
+}
+
+class _ReservationFormScreenState extends State<ReservationFormScreen> {
+  final _formKey = GlobalKey<FormState>();
+
+  // Controllers
+  final _nameController = TextEditingController();
+  final _emailController = TextEditingController();
+  final _phoneController = TextEditingController();
+  final _specialRequestsController = TextEditingController();
+
+  // Selected values
+  String? _selectedGuests = "1 Guest";
+  String? _selectedRoomType = "Standard Room";
+  DateTime? _checkInDate;
+  DateTime? _checkOutDate;
+
+  bool get _isEditMode => widget.reservation != null;
+
+  @override
+  void initState() {
+    super.initState();
+    _initializeForm();
+  }
+
+  void _initializeForm() {
+    if (_isEditMode) {
+      final reservation = widget.reservation!;
+      _nameController.text = reservation.name;
+      _emailController.text = reservation.email;
+      _selectedRoomType = reservation.roomType;
+      _checkInDate = reservation.from;
+      _checkOutDate = reservation.to;
+      _selectedGuests = '${reservation.nights} Guests';
+      // Note: You might need to adjust based on your actual data structure
+    }
+  }
+
+  @override
+  void dispose() {
+    _nameController.dispose();
+    _emailController.dispose();
+    _phoneController.dispose();
+    _specialRequestsController.dispose();
+    super.dispose();
+  }
+
+  void _submitForm() {
+    if (_formKey.currentState!.validate()) {
+      // Handle form submission
+      final reservation = Reservation(
+        id: _isEditMode
+            ? widget.reservation!.id
+            : DateTime.now().millisecondsSinceEpoch.toString(),
+        name: _nameController.text,
+        email: _emailController.text,
+        room: _isEditMode
+            ? widget.reservation!.room
+            : 'TBD', // You might want a room selection
+        roomType: _selectedRoomType!,
+        from: _checkInDate!,
+        to: _checkOutDate!,
+        nights: _checkOutDate!.difference(_checkInDate!).inDays,
+        status: _isEditMode ? widget.reservation!.status : 'Confirmed',
+        price: _isEditMode
+            ? widget.reservation!.price
+            : 0.0, // Calculate based on room type
+      );
+
+      print('Reservation ${_isEditMode ? 'updated' : 'created'}: $reservation');
+
+      Navigator.of(context).pop(reservation);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(backgroundColor: Colors.transparent),
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        title: Text(
+          _isEditMode ? 'Edit Reservation' : 'New Reservation',
+          style: const TextStyle(fontWeight: FontWeight.bold),
+        ),
+      ),
       body: Form(
+        key: _formKey,
         child: Padding(
-          padding: const EdgeInsets.all(16.0),
+          padding: const EdgeInsets.all(16),
           child: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  "New Reservation",
-                  style: TextStyle(fontWeight: FontWeight.w700, fontSize: 24),
+                ReservationFormHeader(isEdit: _isEditMode),
+
+                GuestInfoSection(
+                  nameController: _nameController,
+                  emailController: _emailController,
                 ),
-                verticalSpace(12),
-                Text(
-                  "Add a new guest reservation to the system",
-                  style: TextStyle(color: Colors.grey, fontSize: 14),
-                ),
-                verticalSpace(12),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Row(
-                    children: [
-                      Expanded(
-                        child: CustomTextField(
-                          hintText: "Enter guest name",
-                          label: "Guest Name",
-                        ),
-                      ),
-                      horizontalSpace(14),
-                      Expanded(
-                        child: CustomTextField(
-                          hintText: "guest@email.com",
-                          label: "Guest Email",
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    children: [
-                      Expanded(
-                        child: CustomTextField(
-                          hintText: "+20(1256895687)",
-                          label: "Phone",
-                        ),
-                      ),
-                      horizontalSpace(14),
-                      Expanded(
-                        child: StringDropDownMenu(
-                          hintText: "Select guests",
-                          width: double.infinity,
-                          items: [
-                            "1 Guest",
-                            "2 Guests",
-                            "3 Guests",
-                            "4 Guests",
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                verticalSpace(10),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    children: [
-                      Expanded(
-                        child: CustomDateField(
-                          label: "Check In",
-                          onDateSelected: (date) {},
-                        ),
-                      ),
-                      horizontalSpace(14),
-                      Expanded(
-                        child: CustomDateField(
-                          label: "Check In",
-                          onDateSelected: (date) {},
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    children: [
-                      Expanded(
-                        child: StringDropDownMenu(
-                          hintText: "Select room type",
-                          items: [
-                            "Standard Room",
-                            "Deluxe Room",
-                            "Suite",
-                            "Premium Suite",
-                          ],
-                          width: double.infinity,
-                        ),
-                      ),
-                      horizontalSpace(14),
-                      Expanded(
-                        child: CustomTextField(
-                          hintText: "Any special requirements",
-                          label: "Special Requests",
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                verticalSpace(8),
-                ElevatedButton(
-                  onPressed: () {
-                    Navigator.of(context).pop();
+
+                PhoneAndGuestsSection(
+                  phoneController: _phoneController,
+                  selectedGuests: _selectedGuests,
+                  onSelectGuests: (value) {
+                    setState(() => _selectedGuests = value);
                   },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.black,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadiusGeometry.circular(8),
-                    ),
-                    padding: EdgeInsets.all(16),
-                    minimumSize: Size(double.infinity, 25),
-                  ),
-                  child: Text(
-                    "Create Reservation",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.w700,
-                    ),
-                  ),
+                ),
+
+                CheckInOutSection(
+                  checkIn: _checkInDate,
+                  checkOut: _checkOutDate,
+                  onCheckInSelected: (date) {
+                    setState(() {
+                      _checkInDate = date;
+                      if (_checkOutDate == null ||
+                          _checkOutDate!.isBefore(date)) {
+                        _checkOutDate = date.add(const Duration(days: 1));
+                      }
+                    });
+                  },
+                  onCheckOutSelected: (date) {
+                    setState(() => _checkOutDate = date);
+                  },
+                ),
+
+                RoomAndRequestsSection(
+                  selectedRoom: _selectedRoomType,
+                  onRoomSelected: (value) {
+                    setState(() => _selectedRoomType = value);
+                  },
+                  specialRequestsController: _specialRequestsController,
+                ),
+
+                NightsSummary(checkIn: _checkInDate, checkOut: _checkOutDate),
+
+                SubmitReservationButton(
+                  isEditMode: _isEditMode,
+                  onSubmit: _submitForm,
                 ),
               ],
             ),

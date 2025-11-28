@@ -2,12 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lodgitech/core/constants/app_routes.dart';
 import 'package:lodgitech/core/di/sl.dart';
+import 'package:lodgitech/features/billing/data/models/invoice.dart';
+import 'package:lodgitech/features/billing/presentation/screens/invoice_details.dart';
 import 'package:lodgitech/features/dashboard/domain/repositries/drawer_repositry.dart';
 import 'package:lodgitech/features/dashboard/presentation/cubit/drawer_cubit.dart';
 import 'package:lodgitech/features/dashboard/presentation/screen/dashboard_screen.dart';
 import 'package:lodgitech/features/guest_managment/data/models/guest.dart';
 import 'package:lodgitech/features/guest_managment/presentation/screens/add_new_guest.dart';
 import 'package:lodgitech/features/guest_managment/presentation/screens/guest_profile.dart';
+import 'package:lodgitech/features/reservation/data/models/reservations.dart';
 import 'package:lodgitech/features/reservation/presentation/screens/new_reservation.dart';
 import 'package:lodgitech/features/suppliers/data/order_model.dart';
 import 'package:lodgitech/features/suppliers/data/supplier_model.dart';
@@ -28,7 +31,8 @@ class AppRouter {
           ),
         );
       case AppRoutes.newReservation:
-        return MaterialPageRoute(builder: (_) => NewReservation());
+        final Reservation? reservation = settings.arguments as Reservation?;
+        return MaterialPageRoute(builder: (_) => ReservationFormScreen(reservation: reservation,));
       case AppRoutes.newGuest:
         return MaterialPageRoute(builder: (_) => AddNewGuest());
       case AppRoutes.guestProfile:
@@ -52,6 +56,11 @@ class AppRouter {
             settings.arguments as SupplierModel?;
         return MaterialPageRoute(
           builder: (_) => NewSupplierScreen(supplier: supplierModel),
+        );
+      case AppRoutes.invoiceDetails:
+        final Invoice invoice = settings.arguments as Invoice;
+        return MaterialPageRoute(
+          builder: (_) => InvoiceDetailsScreen(invoice: invoice),
         );
     }
   }

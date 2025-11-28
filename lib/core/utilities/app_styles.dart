@@ -48,6 +48,11 @@ abstract class AppStyles {
     fontWeight: FontWeightHelper.extraLight,
     color: Colors.grey,
   );
+  static TextStyle semiBold10White(BuildContext context) => TextStyle(
+    fontSize: getResposiveFontSize(context, fontSize: 10),
+    fontWeight: FontWeightHelper.semiBold,
+    color: Colors.white,
+  );
 }
 
 double getResposiveFontSize(BuildContext context, {required double fontSize}) {
