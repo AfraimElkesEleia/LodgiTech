@@ -8,6 +8,7 @@ import 'package:lodgitech/features/reports/data/models/report_analysis.dart';
 import 'package:lodgitech/features/reports/presentation/widgets/customer_analytics_chart_widget.dart';
 import 'package:lodgitech/features/reports/presentation/widgets/customer_segmentation_section.dart';
 import 'package:lodgitech/features/reports/presentation/widgets/occupancy_chart_widget.dart';
+import 'package:lodgitech/features/reports/presentation/widgets/report_chart_section.dart';
 import 'package:lodgitech/features/reports/presentation/widgets/report_data_list.dart';
 import 'package:lodgitech/features/reports/presentation/widgets/report_summary_section.dart';
 import 'package:lodgitech/features/reports/presentation/widgets/revenue_chart_widget.dart';
@@ -62,63 +63,7 @@ class _ReportsDesktopLayoutState extends State<ReportsDesktopLayout> {
           SliverToBoxAdapter(child: HeaderOfScreen(titleOfScreen: "Report")),
           ReportDataList(reportSummaryItems: reportSummaryItems),
           SliverToBoxAdapter(child: verticalSpace(10)),
-          SliverToBoxAdapter(
-            child: CustomContainer(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    "Hotel Analytics Reports",
-                    style: AppStyles.semiBold14Black(context),
-                  ),
-                  Text(
-                    "Comprehensive insights into hotel operations and performance",
-                    style: AppStyles.extraLight14Grey(context),
-                  ),
-                  verticalSpace(8),
-                  Row(
-                    children: [
-                      StringDropDownMenu(
-                        items: [
-                          "Occupancy Report",
-                          "Revenue Report",
-                          "Customer Analytics",
-                          "Room Performance",
-                        ],
-                        width: 250,
-                        onSelected: (value) {
-                          setState(() {
-                            selectedReport = value!;
-                          });
-                        },
-                      ),
-                      horizontalSpace(8),
-                      StringDropDownMenu(
-                        items: [
-                          "This Week",
-                          "This Month",
-                          "This Quarter",
-                          "This Year",
-                        ],
-                        width: 200,
-                        onSelected: (value) {
-                          setState(() {
-                            selectedPeriod = value!;
-                          });
-                        },
-                      ),
-                    ],
-                  ),
-                  verticalSpace(10),
-                  AspectRatio(
-                    aspectRatio: 2.3 / 0.9,
-                    child: _buildSelectedChart(),
-                  ),
-                  verticalSpace(10),
-                ],
-              ),
-            ),
-          ),
+          ReportChartSection(),
           SliverToBoxAdapter(
             child: Row(
               children: [

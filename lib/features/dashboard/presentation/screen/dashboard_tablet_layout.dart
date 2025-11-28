@@ -6,6 +6,7 @@ import 'package:lodgitech/features/dashboard/presentation/cubit/drawer_state.dar
 import 'package:lodgitech/features/dashboard/presentation/screen/dashboard_tablet_layout_content.dart';
 import 'package:lodgitech/features/dashboard/presentation/widgets/custom_drawer.dart';
 import 'package:lodgitech/features/guest_managment/presentation/screens/guest_management_desktop.dart';
+import 'package:lodgitech/features/reports/presentation/screens/reports_tablet_layout.dart';
 import 'package:lodgitech/features/reservation/presentation/screens/reservation_desktop_layout.dart';
 import 'package:lodgitech/features/room_management/presentation/screens/room_management_tablet_layout.dart';
 import 'package:lodgitech/features/suppliers/presentation/screen/suppliers_desktop_layout.dart';
@@ -21,7 +22,7 @@ class DashboardTabletLayout extends StatelessWidget {
     BillingDesktopLayout(),
     SuppliersDesktopLayout(),
     TasksDesktopLayout(),
-    Placeholder(),
+    ReportsTabletLayout(),
   ];
   @override
   Widget build(BuildContext context) {
