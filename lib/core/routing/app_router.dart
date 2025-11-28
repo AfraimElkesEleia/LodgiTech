@@ -10,6 +10,7 @@ import 'package:lodgitech/features/dashboard/presentation/screen/dashboard_scree
 import 'package:lodgitech/features/guest_managment/data/models/guest.dart';
 import 'package:lodgitech/features/guest_managment/presentation/screens/add_new_guest.dart';
 import 'package:lodgitech/features/guest_managment/presentation/screens/guest_profile.dart';
+import 'package:lodgitech/features/login/presentation/screens/login_screen.dart';
 import 'package:lodgitech/features/reservation/data/models/reservations.dart';
 import 'package:lodgitech/features/reservation/presentation/screens/new_reservation.dart';
 import 'package:lodgitech/features/suppliers/data/order_model.dart';
@@ -62,6 +63,8 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (_) => InvoiceDetailsScreen(invoice: invoice),
         );
+      case AppRoutes.loginScreen:
+      return MaterialPageRoute(builder: (_)=> LoginScreen() );
     }
   }
 }
